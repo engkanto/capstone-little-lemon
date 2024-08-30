@@ -1,12 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useAppContext } from '../context/AppContext'
 
 function Footer() {
+  const { config } = useAppContext()
+
   return (
     <footer className="container">
       <div className="grid fourcol-grid">
         <div>
-          <img src="https://via.placeholder.com/150" alt="Little Lemon logo" />
+          <img src="https://via.placeholder.com/150" alt={`${config.restaurantName} logo`} />
         </div>
         <nav className='footer-nav'>
           <h3>Doormat Navigation</h3>
@@ -22,18 +25,19 @@ function Footer() {
         <div>
           <h3>Contact</h3>
           <address>
-            <p>123 Main St, Chicago, IL 60601</p>
-            <p>Phone: <a href="tel:+11234567890">(123) 456-7890</a></p>
-            <p>Email: <a href="mailto:info@littlelemon.com">info@littlelemon.com</a></p>
+            <p>{config.address}</p>
+            <p>Phone: <a href={`tel:${config.phone}`}>{config.phone}</a></p>
+            <p>Email: <a href={`mailto:${config.email}`}>{config.email}</a></p>
           </address>
         </div>
         <div>
           <h3>Social Media</h3>
           <ul>
-            <li><a href="https://facebook.com/littlelemon">Facebook</a></li>
-            <li><a href="https://instagram.com/littlelemon">Instagram</a></li>
-            <li><a href="https://youtube.com/littlelemon">YouTube</a></li>
-            <li><a href="https://tiktok.com/@littlelemon">TikTok</a></li>
+            {Object.entries(config.socialMedia).map(([platform, url]) => (
+              <li key={platform}>
+                <a href={url}>{platform.charAt(0).toUpperCase() + platform.slice(1)}</a>
+              </li>
+            ))}
           </ul>
         </div>
       </div>

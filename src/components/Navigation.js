@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useAppContext } from '../context/AppContext'
 import './Navigation.css'
+
 function Navigation() {
+  const { config } = useAppContext()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const toggleMenu = () => {
@@ -11,7 +14,7 @@ function Navigation() {
   return (
     <nav className="container">
       <ul>
-        <li><strong>Little Lemon</strong></li>
+        <li><strong>{config.restaurantName}</strong></li>
       </ul>
       <ul className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
         <li><Link to="/" onClick={toggleMenu}>Home</Link></li>
