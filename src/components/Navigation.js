@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useAppContext } from '../context/AppContext'
 import './Navigation.css'
+import logo from '../assets/Logo.svg'
 
 function Navigation() {
   const { config } = useAppContext()
@@ -14,7 +15,8 @@ function Navigation() {
   return (
     <nav className="container">
       <ul>
-        <li><strong>{config.restaurantName}</strong></li>
+        <li>
+          <img src={logo} alt={config.restaurantName} /></li>
       </ul>
       <ul className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
         <li><Link to="/" onClick={toggleMenu}>Home</Link></li>

@@ -8,8 +8,8 @@ function Testimonial() {
     <div className="container">
       <h2>Testimonials</h2>
       <div className="grid fourcol-grid">
-        {testimonials.map((item) => (
-          <PersonCard key={item.id} {...item} />
+        {testimonials.map((item, index) => (
+          <PersonCard key={item.id} {...item} style={{ animationDelay: `${index * 0.1}s` }} />
         ))}
       </div>
     </div>

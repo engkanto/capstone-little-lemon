@@ -9,8 +9,8 @@ function Menu() {
     <div className="container">
       <h2>Our Menu</h2>
       <div className="grid tricol-grid">
-        {menuItems.map((item) => (
-          <MenuCard key={item.id} {...item} />
+        {menuItems.map((item, index) => (
+          <MenuCard key={item.id} {...item} style={{ animationDelay: `${index * 0.1}s` }} />
         ))}
       </div>
     </div>
