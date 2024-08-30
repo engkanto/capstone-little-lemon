@@ -2,10 +2,10 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import Navigation from './components/Navigation';
-import LandingPage from './pages/LandingPage';
-import ReservationPage from './pages/ReservationPage';
-import OrderPage from './pages/OrderPage';
-import LoginPage from './pages/LoginPage';
+import Home from './pages/Home';
+import Reservations from './pages/Reservations';
+import Order from './pages/Order';
+import Login from './pages/Login';
 import Footer from './components/Footer';
 
 function App() {
@@ -36,10 +36,10 @@ function App() {
       </header>
       <main>
         <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/reservation" element={<ReservationPage />} />
-          <Route path="/order" element={<OrderPage />} />
-          <Route path="/login" element={<LoginPage />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/reservation" element={<Reservations />} />
+          <Route path="/order" element={<Order />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </main>
       <Footer />

@@ -13,8 +13,10 @@ function PersonCard({ name, rating, review, image, style }) {
       className={`person-card animate-slide-down ${isIntersecting ? 'animated' : ''}`}
       style={isIntersecting ? style : {}}
     >
-      <img src={image} alt={name} />
-      <h3>{name}</h3>
+      <div className="person">
+        <img src={image} alt={name} />
+        <h3>{name}</h3>
+      </div>
       <p className='rating'>Rating: {'⭐'.repeat(rating)}</p>
       <p className='review'>{review}</p>
     </article>

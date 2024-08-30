@@ -15,8 +15,8 @@ function MenuCard({ title, description, price, image, style }) {
     >
       <img src={image} alt={title} />
       <h3>{title}</h3>
-      <p>{description}</p>
-      <p>${price.toFixed(2)}</p>
+      <p className='description'>{description}</p>
+      <p className='price'>${price.toFixed(2)}</p>
       <button>Order Delivery</button>
     </article>
   )
