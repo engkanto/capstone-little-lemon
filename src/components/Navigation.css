@@ -2,7 +2,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 0;
+  padding: 0;
 }
 
 .nav-links {
@@ -14,6 +14,19 @@ nav {
 
 .nav-links li {
   margin-left: 1rem;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  transition: transform 0.3s ease;
+  background-color: #fff;
+  z-index: 1;
+}
+.navbar-hidden {
+  transform: translateY(-100%);
 }
 
 .hamburger {
