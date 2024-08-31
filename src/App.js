@@ -7,6 +7,7 @@ import Reservations from './pages/Reservations';
 import Order from './pages/Order';
 import Login from './pages/Login';
 import Footer from './components/Footer';
+import restaurantImg from './assets/llrestaurant.jpg';
 
 function App() {
   return (
@@ -22,14 +23,14 @@ function App() {
         <meta property="og:url" content="https://littlelemon.com/" />
         <meta property="og:title" content="Little Lemon Restaurant" />
         <meta property="og:description" content="A charming neighborhood bistro serving simple food and classic cocktails in a lively but casual environment" />
-        <meta property="og:image" content="https://littlelemon.com/og-image.jpg" />
+        <meta property="og:image" content={restaurantImg} />
 
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://littlelemon.com/" />
         <meta property="twitter:title" content="Little Lemon Restaurant" />
         <meta property="twitter:description" content="A charming neighborhood bistro serving simple food and classic cocktails in a lively but casual environment" />
-        <meta property="twitter:image" content="https://littlelemon.com/og-image.jpg" />
+        <meta property="twitter:image" content={restaurantImg} />
       </Helmet>
       <header>
         <Navigation />
