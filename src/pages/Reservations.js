@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { getRandomAvailability, submitReservation } from '../api/reservationApi';
+import { updateTimes, submitReservation } from '../api/reservationApi';
 import Dialog from '../components/Dialog';
 
 const validationSchema = Yup.object().shape({
@@ -19,7 +19,7 @@ function Reservations() {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [dialogContent, setDialogContent] = useState({ title: '', message: '', type: '' });
   
-  let availableTimes = getRandomAvailability();
+  let availableTimes = updateTimes();
 
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     try {
@@ -31,7 +31,7 @@ function Reservations() {
           message: 'Your reservation has been submitted successfully!',
           type: 'success'
         });
-        availableTimes = getRandomAvailability();
+        availableTimes = updateTimes();
         resetForm();
       } else {
         // alert('Failed to submit reservation. Please try again.');
@@ -40,7 +40,7 @@ function Reservations() {
           message: 'Sorry, somebody beat you to it. Please try a different time.',
           type: 'error'
         });
-        availableTimes = getRandomAvailability();
+        availableTimes = updateTimes();
       }
     } catch (error) {
       console.error('Error submitting reservation:', error);

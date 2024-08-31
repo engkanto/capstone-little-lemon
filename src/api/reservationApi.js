@@ -1,4 +1,4 @@
-const getRandomAvailability = () => {
+const updateTimes = () => {
   const availabilities = [];
   const startTime = new Date().setHours(17, 0, 0); // 5 PM
   const endTime = new Date().setHours(24, 0, 0); // 12 AM
@@ -26,4 +26,4 @@ const submitReservation = (reservationData) => {
   });
 };
 
-export { getRandomAvailability, submitReservation };
+export { updateTimes, submitReservation };
