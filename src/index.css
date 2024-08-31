@@ -49,6 +49,7 @@ a[type=button] {
 .reservation {
   background-color: var(--background-color-yellow);
   min-height: 500px;
+  margin-bottom: 0;
 }
 
 .container {
@@ -211,10 +212,13 @@ address {
   font-size: 0.7rem;
 }
 
+.formField {
+  margin-bottom: 1rem;
+}
 .error {
   color: red;
   font-size: 0.8rem;
-  margin-top: -0.5rem;
+  margin: -0.8rem 0 0 1rem;
 }
 @media (max-width: 992px) {
   .tricol-grid,
