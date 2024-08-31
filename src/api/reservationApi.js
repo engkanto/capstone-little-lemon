@@ -15,8 +15,10 @@ const getRandomAvailability = () => {
 const submitReservation = (reservationData) => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      if (Math.random() > 0.2) {
+      if (Math.random() > 0.5) {
         resolve({ success: true, message: 'Reservation submitted successfully' });
+      } else if (Math.random() > 0.2) {
+        resolve({ success: false, message: 'Reservation taken' });
       } else {
         reject({ success: false, message: 'Failed to submit reservation' });
       }

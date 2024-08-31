@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { getRandomAvailability, submitReservation } from '../api/reservationApi';
+import Dialog from '../components/Dialog';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required('Name is required'),
@@ -15,21 +16,41 @@ const validationSchema = Yup.object().shape({
 });
 
 function Reservations() {
-  const availableTimes = getRandomAvailability();
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [dialogContent, setDialogContent] = useState({ title: '', message: '', type: '' });
+  
+  let availableTimes = getRandomAvailability();
 
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     try {
       const result = await submitReservation(values);
       if (result.success) {
-        alert('Reservation submitted successfully!');
+        // alert('Reservation submitted successfully!');
+        setDialogContent({
+          title: 'Reservation Successful',
+          message: 'Your reservation has been submitted successfully!',
+          type: 'success'
+        });
+        availableTimes = getRandomAvailability();
         resetForm();
       } else {
-        alert('Failed to submit reservation. Please try again.');
+        // alert('Failed to submit reservation. Please try again.');
+        setDialogContent({
+          title: 'Reservation Failed',
+          message: 'Sorry, somebody beat you to it. Please try a different time.',
+          type: 'error'
+        });
+        availableTimes = getRandomAvailability();
       }
     } catch (error) {
       console.error('Error submitting reservation:', error);
-      alert('An error occurred. Please try again.');
+      setDialogContent({
+        title: 'Error',
+        message: 'An error occurred. Please try again.',
+        type: 'error'
+      });
     }
+    setDialogOpen(true);
     setSubmitting(false);
   };
 
@@ -110,6 +131,13 @@ function Reservations() {
           </Form>
         )}
       </Formik>
+      <Dialog
+        isOpen={dialogOpen}
+        onClose={() => setDialogOpen(false)}
+        title={dialogContent.title}
+        message={dialogContent.message}
+        type={dialogContent.type}
+      />
     </div>
     </section>
     </>
